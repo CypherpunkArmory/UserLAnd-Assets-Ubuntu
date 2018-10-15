@@ -48,11 +48,6 @@ else
    echo "deb http://archive.ubuntu.com/ubuntu bionic-backports main restricted universe multiverse" >> $ROOTFS_DIR/etc/apt/sources.list
 fi
 
-cp scripts/addNonRootUser.sh $ROOTFS_DIR
-chmod 777 $ROOTFS_DIR/addNonRootUser.sh
-DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true LC_ALL=C LANGUAGE=C LANG=C chroot $ROOTFS_DIR ./addNonRootUser.sh
-rm $ROOTFS_DIR/addNonRootUser.sh
-
 cp scripts/shrinkRootfs.sh $ROOTFS_DIR
 chmod 777 $ROOTFS_DIR/shrinkRootfs.sh
 DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true LC_ALL=C LANGUAGE=C LANG=C chroot $ROOTFS_DIR ./shrinkRootfs.sh
