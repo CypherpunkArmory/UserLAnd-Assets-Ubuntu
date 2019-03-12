@@ -1,0 +1,9 @@
+version: '3.2'
+
+services:
+   imagebuild:
+     build: 
+       args:
+         IMAGE_ARCH: amd64
+         QEMU_FILE: qemu-x86_64-static
+         RUN_CMD: /input/ubuntu.sh x86_64
