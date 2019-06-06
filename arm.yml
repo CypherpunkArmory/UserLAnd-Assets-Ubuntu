@@ -6,4 +6,4 @@ services:
        args:
          IMAGE_ARCH: arm32v7
          QEMU_FILE: qemu-arm-static
-         RUN_CMD: /input/ubuntu.sh arm
+         RUN_CMD: /input/main.sh arm
