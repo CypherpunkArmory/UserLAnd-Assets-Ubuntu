@@ -22,3 +22,4 @@ tar -xzvf release/$1-assets.tar.gz -C release/filesystem/support/
 rm release/$1-assets.tar.gz 
 tar -czvf release/$1-rootfs.tar.gz -C release/filesystem/ .
 rm -rf release/filesystem
+rm -rf release/$1-assets.txt
