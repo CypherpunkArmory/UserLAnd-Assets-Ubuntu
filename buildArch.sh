@@ -13,3 +13,12 @@ cp output/libdisableselinux.so release/assets/
 tar -czvf release/$1-assets.tar.gz -C release/assets/ .
 for f in $(ls release/assets/); do echo "$f $(date +%s -r release/assets/$f) $(md5sum release/assets/$f | awk '{ print $1 }')" >> release/$1-assets.txt; done
 rm -rf release/assets
+
+mkdir -p release/filesystem
+tar -xzvf release/$1-rootfs.tar.gz -C release/filesystem/
+rm release/$1-rootfs.tar.gz
+mkdir -p release/filesystem/support
+tar -xzvf release/$1-assets.tar.gz -C release/filesystem/support/
+rm release/$1-assets.tar.gz 
+rm -rf release/filesytem
+tar -czvf release/$1-assets.tar.gz -C release/filesystem/ .
