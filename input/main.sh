@@ -28,6 +28,34 @@ apt-get update
 export DEBIAN_FRONTEND=noninteractive
 apt-get install -y --no-install-recommends sudo dropbear libgl1-mesa-glx tightvncserver xterm xfonts-base twm expect
 
+#Install OpenJDK-8 and other useful tools
+sudo apt -y install iputils-ping vim wget cabextract openssh-client fontconfig openjdk-8-jre
+sudo apt -y autoremove
+
+# Copy Microsoft TrueType core fonts
+wget https://downloads.sourceforge.net/project/mscorefonts2/cabs/EUupdate.EXE
+sudo cabextract -d /usr/share/fonts/msttcore/ EUupdate.EXE
+rm EUupdate.EXE
+
+# Map font families (serif = Times, sans-serif = Arial)
+cat <<EOF > /etc/fonts/local.conf
+<?xml version="1.0"?>
+<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+<fontconfig>
+  <alias>
+    <family>serif</family>
+    <prefer><family>Times New Roman</family></prefer>
+  </alias>
+  <alias>
+    <family>sans-serif</family>
+    <prefer><family>Arial</family></prefer>
+  </alias>
+</fontconfig>
+EOF
+
+# Update the font cache
+sudo fc-cache --force
+
 #clean up after ourselves
 apt-get clean
 
