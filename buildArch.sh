@@ -20,5 +20,5 @@ rm release/$1-rootfs.tar.gz
 mkdir -p release/filesystem/support
 tar -xzvf release/$1-assets.tar.gz -C release/filesystem/support/
 rm release/$1-assets.tar.gz 
-rm -rf release/filesytem
-tar -czvf release/$1-assets.tar.gz -C release/filesystem/ .
+tar -czvf release/$1-rootfs.tar.gz -C release/filesystem/ .
+rm -rf release/filesystem

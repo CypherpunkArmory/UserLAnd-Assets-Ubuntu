@@ -29,12 +29,12 @@ export DEBIAN_FRONTEND=noninteractive
 apt-get install -y --no-install-recommends sudo dropbear libgl1-mesa-glx tightvncserver xterm xfonts-base twm expect
 
 #Install OpenJDK-8 and other useful tools
-sudo apt -y install iputils-ping vim wget cabextract openssh-client fontconfig openjdk-8-jre
-sudo apt -y autoremove
+taskset 0x1 apt -y install iputils-ping vim wget cabextract openssh-client fontconfig openjdk-8-jre
+apt -y autoremove
 
 # Copy Microsoft TrueType core fonts
 wget https://downloads.sourceforge.net/project/mscorefonts2/cabs/EUupdate.EXE
-sudo cabextract -d /usr/share/fonts/msttcore/ EUupdate.EXE
+cabextract -d /usr/share/fonts/msttcore/ EUupdate.EXE
 rm EUupdate.EXE
 
 # Map font families (serif = Times, sans-serif = Arial)
@@ -54,12 +54,12 @@ cat <<EOF > /etc/fonts/local.conf
 EOF
 
 # Update the font cache
-sudo fc-cache --force
+fc-cache --force
 
 #clean up after ourselves
 apt-get clean
 
-#tar up what we have before we grow it
+#tar up what we have before we grow it further
 tar -czvf /output/rootfs.tar.gz --exclude sys --exclude dev --exclude proc --exclude mnt --exclude etc/mtab --exclude output --exclude input --exclude .dockerenv /
 
 #build disableselinux to go with this release
