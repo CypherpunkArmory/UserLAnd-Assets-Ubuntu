@@ -20,6 +20,7 @@ rm release/$1-rootfs.tar.gz
 mkdir -p release/filesystem/support
 tar -xzvf release/$1-assets.tar.gz -C release/filesystem/support/
 rm release/$1-assets.tar.gz 
+chmod +x release/filesystem/support/*
 tar -czvf release/$1-rootfs.tar.gz -C release/filesystem/ .
 rm -rf release/filesystem
 rm -rf release/$1-assets.txt
