@@ -7,7 +7,7 @@ services:
        dockerfile: Dockerfile
        args:
          IMAGE_DISTRO: ubuntu
-         IMAGE_VERSION: bionic
+         IMAGE_VERSION: bionic-20190515
      volumes:
        - ./output:/output
        - ./input:/input
