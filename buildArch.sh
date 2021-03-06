@@ -5,22 +5,14 @@ docker-compose -f main.yml -f $1.yml build
 docker-compose -f main.yml -f $1.yml up
 mkdir -p release
 cp output/rootfs.tar.gz release/$1-rootfs.tar.gz
-mkdir -p release/assets
-cp assets/all/* release/assets/
-rm release/assets/assets.txt
-cp output/busybox release/assets/
-cp output/libdisableselinux.so release/assets/
-tar -czvf release/$1-assets.tar.gz -C release/assets/ .
-for f in $(ls release/assets/); do echo "$f $(date +%s -r release/assets/$f) $(md5sum release/assets/$f | awk '{ print $1 }')" >> release/$1-assets.txt; done
-rm -rf release/assets
-
-mkdir -p release/filesystem
-tar -xzvf release/$1-rootfs.tar.gz -C release/filesystem/
-rm release/$1-rootfs.tar.gz
-mkdir -p release/filesystem/support
-tar -xzvf release/$1-assets.tar.gz -C release/filesystem/support/
-rm release/$1-assets.tar.gz 
-chmod +x release/filesystem/support/*
-tar -czvf release/$1-rootfs.tar.gz -C release/filesystem/ .
-rm -rf release/filesystem
-rm -rf release/$1-assets.txt
+mkdir -p release/support
+cp assets/all/* release/support/
+rm release/support/assets.txt
+cp output/busybox release/support/
+cp output/libdisableselinux.so release/support/
+chmod 777 release/support/*
+cd release
+gunzip $1-rootfs.tar.gz
+tar rvf $1-rootfs.tar support
+gzip $1-rootfs.tar
+rm -rf support

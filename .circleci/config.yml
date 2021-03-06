@@ -17,7 +17,7 @@ jobs:
           command: sudo apt-get update
       - run:
           name: install binfmt-support
-          command: sudo apt-get install binfmt-support qemu qemu-user-static
+          command: sudo apt-get install binfmt-support qemu qemu-user-static gzip
       - run:
           name: build arm assets
           command: ./buildArch.sh arm
