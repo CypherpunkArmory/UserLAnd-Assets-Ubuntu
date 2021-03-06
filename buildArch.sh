@@ -12,6 +12,7 @@ cp output/busybox release/support/
 cp output/libdisableselinux.so release/support/
 chmod 777 release/support/*
 cd release
+#modify existing tar.gz to include assets
 gunzip $1-rootfs.tar.gz
 tar rvf $1-rootfs.tar support
 gzip $1-rootfs.tar
