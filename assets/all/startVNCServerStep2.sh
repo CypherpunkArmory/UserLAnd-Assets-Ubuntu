@@ -38,7 +38,7 @@ fi
 rm /tmp/.X51-lock
 rm /tmp/.X11-unix/X51
 tightvncserver -kill :51
-tightvncserver -localhost :51
+tightvncserver :51
 
 while [ ! -f /home/$INITIAL_USERNAME/.vnc/localhost:51.pid ]
 do
