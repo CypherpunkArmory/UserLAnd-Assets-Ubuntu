@@ -10,18 +10,6 @@ echo "unset LD_LIBRARY_PATH" >> /etc/profile.d/userland.sh
 echo "export LIBGL_ALWAYS_SOFTWARE=1" >> /etc/profile.d/userland.sh
 chmod +x /etc/profile.d/userland.sh
 
-#update our repos so we can install some packages
-if [[ $1 = *"arm"* ]]; then
-   echo "deb http://ports.ubuntu.com/ubuntu-ports bionic main restricted universe multiverse" > /etc/apt/sources.list
-   echo "deb http://ports.ubuntu.com/ubuntu-ports bionic-security main restricted universe multiverse" >> /etc/apt/sources.list
-   echo "deb http://ports.ubuntu.com/ubuntu-ports bionic-updates main restricted universe multiverse" >> /etc/apt/sources.list
-   echo "deb http://ports.ubuntu.com/ubuntu-ports bionic-backports main restricted universe multiverse" >> /etc/apt/sources.list
-else
-   echo "deb http://archive.ubuntu.com/ubuntu bionic main restricted universe multiverse" > /etc/apt/sources.list
-   echo "deb http://archive.ubuntu.com/ubuntu bionic-security main restricted universe multiverse" >> /etc/apt/sources.list
-   echo "deb http://archive.ubuntu.com/ubuntu bionic-updates main restricted universe multiverse" >> /etc/apt/sources.list
-   echo "deb http://archive.ubuntu.com/ubuntu bionic-backports main restricted universe multiverse" >> /etc/apt/sources.list
-fi
 apt-get update
 
 #install some packages with need for UserLAnd
