@@ -1,5 +1,7 @@
 #!/bin/bash
 
+wget -q -O -https://archive.kali.org/archive-key.asc > input/archive-key.asc
+
 docker-compose -f main.yml -f $1.yml down
 docker-compose -f main.yml -f $1.yml build
 docker-compose -f main.yml -f $1.yml up
