@@ -26,7 +26,7 @@ apt-get update
 
 #install some packages with need for UserLAnd
 export DEBIAN_FRONTEND=noninteractive
-apt-get install -y --no-install-recommends sudo dropbear libgl1-mesa-glx tightvncserver xterm xfonts-base twm expect
+apt-get install -y --no-install-recommends sudo dropbear libgl1-mesa-glx tightvncserver xterm xfonts-base twm openbox expect
 
 #Install OpenJDK-8 and other useful tools
 taskset 0x1 apt -y install iputils-ping vim wget cabextract openssh-client fontconfig openjdk-8-jre
