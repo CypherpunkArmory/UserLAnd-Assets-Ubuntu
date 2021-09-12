@@ -1,6 +1,9 @@
 # UserLAnd-Assets-Ubuntu
 A repository for holding Ubuntu specific assets for UserLAnd
 
+For pre-requisites, I run this on an Ubuntu box with these packages installed: 
+binfmt-support qemu qemu-user-static gzip
+
 After cloning this repo, you simply do the following...
 
 `sudo ./scripts/buildArch.sh $desiredArch` 
