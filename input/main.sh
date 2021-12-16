@@ -15,7 +15,8 @@ apt-get update
 
 #install some packages with need for UserLAnd
 export DEBIAN_FRONTEND=noninteractive
-apt-get install -y --no-install-recommends sudo dropbear libgl1-mesa-glx tightvncserver xterm xfonts-base twm expect wget curl
+apt-get install -y --no-install-recommends sudo dropbear libgl1-mesa-glx tightvncserver xterm xfonts-base openbox expect wget curl
+taskset 0x1 apt -y install openjdk-8-jre
 
 #clean up after ourselves
 apt-get clean
