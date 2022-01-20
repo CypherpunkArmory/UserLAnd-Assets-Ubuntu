@@ -10,13 +10,31 @@ echo "unset LD_LIBRARY_PATH" >> /etc/profile.d/userland.sh
 echo "export LIBGL_ALWAYS_SOFTWARE=1" >> /etc/profile.d/userland.sh
 chmod +x /etc/profile.d/userland.sh
 
+#grab ngrok
+case "$1" in
+    arm) wget -O ngrok.tgz https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-arm.tgz
+        ;;
+    arm64) wget -O ngrok.tgz https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-arm64.tgz
+        ;;
+    x86) wget -O ngrok.tgz https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-386.tgz
+        ;;
+    x86_64) wget -O ngrok.tgz https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.tgz
+        ;;
+    *) echo "unsupported arch"
+        exit
+        ;;
+esac
+
+tar -xzvf ngrok.tgz -C /usr/local/bin
+rm ngrok.tgz
+
 #update our repos so we can install some packages
 apt-get update
 
 #install some packages with need for UserLAnd
 export DEBIAN_FRONTEND=noninteractive
 apt-get install -y --no-install-recommends sudo dropbear libgl1-mesa-glx tightvncserver xterm xfonts-base openbox expect wget curl
-taskset 0x1 apt -y install openjdk-8-jre
+taskset 0x1 apt -y install openjdk-17-jre
 
 #clean up after ourselves
 apt-get clean
