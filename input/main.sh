@@ -16,6 +16,14 @@ apt-get update
 #install some packages with need for UserLAnd
 export DEBIAN_FRONTEND=noninteractive
 apt-get install -y --no-install-recommends sudo dropbear libgl1 libglx-mesa0 tightvncserver xterm xfonts-base twm expect wget curl
+apt-get install -y pulseaudio
+
+#don't use rust based uutils for now
+apt-get remove coreutils-from-uutils --allow-remove-essential
+mkdir -p /etc/apt/preferences.d/uutils
+echo "Package: coreutils-from-uutils" > /etc/apt/preferences.d/uutils
+echo "Pin: release a=*" >> /etc/apt/preferences.d/uutils
+echo "Pin-Priority: -10" >> /etc/apt/preferences.d/uutils
 
 #clean up after ourselves
 apt-get clean
