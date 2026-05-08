@@ -20,7 +20,7 @@ apt-get install -y pulseaudio
 
 #don't use rust based uutils for now
 apt-get remove coreutils-from-uutils --allow-remove-essential
-mkdir -p /etc/apt/preferences.d/uutils
+mkdir -p /etc/apt/preferences.d
 echo "Package: coreutils-from-uutils" > /etc/apt/preferences.d/uutils
 echo "Pin: release a=*" >> /etc/apt/preferences.d/uutils
 echo "Pin-Priority: -10" >> /etc/apt/preferences.d/uutils
