@@ -19,9 +19,7 @@ apt-get install -y --no-install-recommends sudo dropbear libgl1 libglx-mesa0 tig
 apt-get install -y pulseaudio
 
 #don't use rust based uutils for now
-cargo -q uninstall coreutils
-cargo -q uninstall uutils 
-apt-get remove coreutils-from-uutils --allow-remove-essential
+apt-get remove -y --allow-remove-essential coreutils-from-uutils
 mkdir -p /etc/apt/preferences.d
 echo "Package: coreutils-from-uutils" > /etc/apt/preferences.d/uutils
 echo "Pin: release a=*" >> /etc/apt/preferences.d/uutils
